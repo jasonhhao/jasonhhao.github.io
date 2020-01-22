@@ -22,11 +22,11 @@ ROC curve用来可视化比较分类模型的结果，很多时候听到的AUC�
 </p>
 
 其中我们需要的就是四个数字：
-
-TP (True Positive): 真实值为0，预测值也为0
-FN (False Negative): 真实值为0，预测值为1
-FP (False Positive): 真实值为1，预测值为0
-TN (True Negative): 真实值为0，预测值也为0
+<br/>
+>> TP (True Positive): 真实值为0，预测值也为0 <br/>
+>> FN (False Negative): 真实值为0，预测值为1<br/>
+>> FP (False Positive): 真实值为1，预测值为0<br/>
+>> TN (True Negative): 真实值为0，预测值也为0<br/>
 其实翻译成人话很好理解，比如TP (True Positive)，真实值属于猫的中我预测为猫的是多少个；FP (False Positive)就是真实值不是猫的，但是被我预测成猫的有多少个。
 
 然后根据这四个数值，我们可以推演出一些评价指标的计算公式：

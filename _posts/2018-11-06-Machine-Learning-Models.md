@@ -2,8 +2,8 @@
 layout: post
 title:  Machine Learning Models
 date:   2018-11-06 01:08:00 +0800
-categories: Machine Learning
-tag: models
+categories: 机器学习
+tag: 模型
 ---
 
 * content

@@ -32,7 +32,9 @@ tag: 梯度下降
 在数学里这条路径可以通过梯度下降找到。有没有想过如果不止一个局部最低点怎么办？
 这种情况特别多，尤其是在深度学习中一不小心就会栽进局部最优而不是全局最优，我们抽象出来这张图：
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/2.png">
+</p>
 
 现在我们有的不只是凸函数那么简单了。假设我们从A点出发放一个小铁球，它会滚到哪？当然是面前的局部最优解（local minimum）。你要非说能滚到全局最优那就是抬杠。可是这不是我们想要的，人性是贪婪的，科学家才不会接受这种结果，他们想出来很多方法，比如随机重置一个初始值，看看是不是还是到了同一个点，我们可以重置10次，如果有一次到了全局最优（global minimum），那么我们就知道应该使用这条路径，之前的都不靠谱。这些我们会到之后的深度学习里再做介绍，在这篇文章里我们只关注第一种凸函数的梯度下降。
 
@@ -43,25 +45,35 @@ tag: 梯度下降
 
 我们已知一堆特征（feature）x和标签（label）y，然后使用MSE做损失函数，则有如下表达式：
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/3.png">
+</p>
 
 如果想让损失函数越来越小，那么是不是要像这样去更新每一个参数θ：
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/4.png">
+</p>
 
 那么这个Δθ是什么呢？就是这个θ对于损失函数J的导数。
 
 我们要做的是对这个损失函数求导，让所有参数的值沿着负梯度的方向（也就是我们之前说的小球滚动的路径）走，直到走到最低点。因为我们要每个参数都下降，所以我们要把每个θ在损失函数上求导，然后让之前的参数θ加上这个负梯度：
 
+<p align="center"> 
+  <img src="/imgs/gradientdescent/5.png">
+</p>
 
-
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/6.png">
+</p>
 
 我们重复这个操作直到收敛（converge），就是直到停止到局部最优。推导过程就不放了，无非就是把平方和之前分母的2抵消掉。那么对于多参数的损失函数，用一个公式就可以表达：
 
 Repeat until converge{
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/7.png">
+</p>
 
 }
 
@@ -80,13 +92,17 @@ Repeat until converge{
 
 这是一种最最常见的形式，也就是把所有的样本都用来参加更新参数θ。也就是我们之前讨论的梯度下降，公式是一样的，这里m就是代表需要所有样本的参与：
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/8.png">
+</p>
 
 （2）随机梯度下降（Stochastic Gradient Descent）
 
 这种梯度下降是随机的挑选一个样本进行下降算法，而不是批量的m个，对应的公式是这样：
 
-
+<p align="center"> 
+  <img src="/imgs/gradientdescent/9.png">
+</p>
 
 （3）小批量梯度下降(Mini-batch Gradient Descent)
 

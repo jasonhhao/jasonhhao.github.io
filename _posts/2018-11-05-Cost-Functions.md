@@ -31,9 +31,9 @@ cost function 顾名思义就是用来计算模型的cost，cost指的是模型�
 
 均方误差（MSE，也叫L2 loss）：
 <p align="center">
-  <img src="/_imgs/costfunction/1.png">
+  <img src="/imgs/costfunction/1.png">
 </p>
 交叉熵函数（cross entropy）：
 <p align="center"> 
-  <img src="/_imgs/costfunction/2.png">
+  <img src="/imgs/costfunction/2.png">
 </p>

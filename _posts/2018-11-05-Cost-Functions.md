@@ -29,5 +29,7 @@ cost function 顾名思义就是用来计算模型的cost，cost指的是模型�
 
 最后扔一点比较常见的cost function，这些以后都会再次介绍：
 
-均方误差（MSE，也叫L2 loss）：<a name='img1'>![](/imgs/costfunction/1.png)</a>
-交叉熵函数（cross entropy）：![Alt text](/imgs/costfunction/2.png)
+均方误差（MSE，也叫L2 loss）：<br />
+  <a name='img1'>![](/_imgs/costfunction/1.png)</a><br />
+交叉熵函数（cross entropy）：<br />
+  <a name='img2'>![](/_imgs/costfunction/2.png)</a>

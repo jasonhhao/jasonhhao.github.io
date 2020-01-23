@@ -17,12 +17,12 @@ permalink: /papers/
 
 [BERT FOR SEQUENCE-TO-SEQUENCE MULTI-LABEL TEXT CLASSIFICATION](/papers/BERT-FOR-SEQUENCE-TO-SEQUENCE-MULTI-LABEL-TEXT-CLASSIFICATION.pdf)
 
-[Attention Is All You Need](/papers/Attention Is All You Need.pdf)
+[Attention Is All You Need](/papers/Attention-Is-All-You-Need.pdf)
 
-[GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
+[MLM Overview](/papers/MLM-Overview.pdf)
 
-[GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
+[word2vec](/papers/word2vec.pdf)
 
-[GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
+[Multilabel-Text Classification for Automated Tag Suggestion](/papers/Multilabel-Text-Classification-for-Automated-Tag-Suggestion.pdf)
 
-[GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
+[A Shared Task Involving Multi label Classification of Clinical Free Text](/papers/A-Shared-Task-Involving-Multi-label-Classification-of-Clinical-Free-Text.pdf)

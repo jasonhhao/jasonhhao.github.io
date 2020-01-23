@@ -17,7 +17,7 @@ permalink: /papers/
 
 [BERT FOR SEQUENCE-TO-SEQUENCE MULTI-LABEL TEXT CLASSIFICATION](/papers/BERT-FOR-SEQUENCE-TO-SEQUENCE-MULTI-LABEL-TEXT-CLASSIFICATION.pdf)
 
-[GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
+[Attention Is All You Need](/papers/Attention Is All You Need.pdf)
 
 [GloVe: Global Vectors for Word Representation](/papers/glove.pdf)
 

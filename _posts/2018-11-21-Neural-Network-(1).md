@@ -67,7 +67,7 @@ input layer我们有3个node，第一层隐含层有4个node，第二层也一�
 
 dW，db，dZ，dA是反向传播时候的导数，只是求偏导，大小不变。
 
-比如说我们的hidden layer 1，l = 1，那么w1维度是当前层的node个数*前一层的node个数也就是4*3; b1的维度是当前层个数*1也就是4*1；z和a一样都是4*feature的个数3也就是4*3。
+比如说我们的hidden layer 1，l = 1，那么w1维度是当前层的node个数*前一层的node个数也就是4 * 3; b1的维度是当前层个数 * 1也就是4 * 1；z和a一样都是4 * feature的个数3也就是4 * 3。
 
 - Forward propagation
 前向传播的过程就像冲动从接受信号往大脑皮层传播的过程。也就是从有了features的输入一直到有一个prediction y。基本过程就跟之前讲的![](https://latex.codecogs.com/gif.latex?z%5E%7B%5Bl%5D%7D%20%3D%20w%5E%7B%5Bl%5D%7D%20x%5E%7B%5Bl-1%5D%7D%20&plus;%20b%5E%7B%5Bl%5D%7D)一样。a就是前一层的输出，σ(z)就是这一层的输出，然后把σ(z)当作前一层输出a再传播给下一层。直到我们有了一个预测值y。这就是一整个前向传播过程。
@@ -135,7 +135,9 @@ dW，db，dZ，dA是反向传播时候的导数，只是求偏导，大小不变
 > - sigmiod函数：
 
 
+<p align="center"> 
   <img src="/imgs/neuralnetwork1/15.png">
+</p>
 
 <p align="center"> 
   <img src="/imgs/neuralnetwork1/16.png">
@@ -168,11 +170,15 @@ dW，db，dZ，dA是反向传播时候的导数，只是求偏导，大小不变
 这次左边取的不是0而是0.1x，是不是就解决了梯度为0的问题。这里0.1是个超参数，我们可以根据情况自己选择。
 
 > - Maxout函数: 
+  <p align="center"> 
   <img src="/imgs/neuralnetwork1/20.png">
+</p>
 就是所有input中最大的那一个。它具有ReLU函数所有的优点，又避免了ReLU的缺点，可以说是很强大的一个函数。但是强大的代价会很大，它的参数量会double，使整个神经网络更加臃肿。
 
 > - ELU函数：
+ <p align="center"> 
   <img src="/imgs/neuralnetwork1/21.png">
+</p>
 这是个对噪声有很强鲁棒性的函数，但是一样，强大的函数计算量很大。
 
 以上基本是现在工业上经常会用到的激活函数，用得最多的也可以说是默认的是ReLU函数。如果效果不好，可以改尝试Leaky ReLU和Maxout。

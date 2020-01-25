@@ -78,7 +78,7 @@ PCA的降维原理就是把原先的n个特征用数量更少的m个特征取代
 6. 将选出来的k个特征值组成另一个对角线矩阵W ∈ n*k
 7. 计算出X_new * W即为我们降维后的特征矩阵
 
-我们带一个例子把上述过程走一遍（实例来自hustqb）：
+我们带一个例子把上述过程走一遍（实例来自[hustqb](https://me.csdn.net/hustqb)）：
 
 <p align="center"> 
   <img src="/imgs/pca/9.png">

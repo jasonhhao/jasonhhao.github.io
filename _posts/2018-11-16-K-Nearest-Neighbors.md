@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  Data Preprocessing
+title:  K Nearest Neighbors
 date:   2018-11-07 00:00:00 +0800
 categories: 机器学习
-tag: 预处理
+tag: k近邻
 ---
 
 * content

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Neural Network
+title:  Neural Network (1)
 date:   2018-11-21 00:00:00 +0800
 categories: 深度学习
 tag: 神经网络

@@ -6,10 +6,10 @@ url: https://github.com/jasonhhao
 resume_site: https://www.linkedin.com/in/jason-hao/
 github: https://github.com/jasonhhao
 baseurl: ""
-description: Actually, less is more!
-meta_description: 没钱为什么还要学深度学习
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+description: 
+meta_description: 
+motto: 
+banner:
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/

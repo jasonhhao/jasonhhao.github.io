@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  K Nearest Neighbors
-date:   2018-11-07 00:00:00 +0800
+date:   2018-11-16 00:00:00 +0800
 categories: 机器学习
 tag: k近邻
 ---

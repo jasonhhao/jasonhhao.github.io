@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Ensemble Learning
-date:   2018-11-07 00:00:00 +0800
+date:   2018-11-30 00:00:00 +0800
 categories: 机器学习
 tag: 集成学习
 ---

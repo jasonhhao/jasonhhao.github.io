@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Neural Network(2)
+title:  Neural Network (2)
 date:   2018-11-21 00:00:00 +0800
 categories: 深度学习
 tag: 神经网络
@@ -10,7 +10,7 @@ tag: 神经网络
 {:toc}
 
 
-接着之前的神经网络第一篇。
+接着之前的[神经网络](https://jasonhhao.github.io/2018/11/20/Neural-Network-1/)第一篇。
 
 这篇文章我们来了解一下更多更专业的细节，来帮助我们更好的训练出神经网络。
 

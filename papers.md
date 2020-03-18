@@ -26,3 +26,5 @@ permalink: /papers/
 [Multilabel-Text Classification for Automated Tag Suggestion](/papers/Multilabel-Text-Classification-for-Automated-Tag-Suggestion.pdf)
 
 [A Shared Task Involving Multi label Classification of Clinical Free Text](/papers/A-Shared-Task-Involving-Multi-label-Classification-of-Clinical-Free-Text.pdf)
+
+[From Word Embeddings To Document Distances](/papers/From-Word-Embeddings-To-Document-Distances.pdf)

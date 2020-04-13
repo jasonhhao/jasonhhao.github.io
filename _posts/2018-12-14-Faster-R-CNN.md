@@ -2,7 +2,7 @@
 layout: post
 title:  Faster R-CNN
 date:   2018-12-14 00:00:00 +0800
-categories: 深度学习
+categories: 计算机视觉
 tag: 递归神经网络
 ---
 

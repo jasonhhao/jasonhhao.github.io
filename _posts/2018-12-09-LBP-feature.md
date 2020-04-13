@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  LBP feature
-date:   -- 00:00:00 +0800
+date:   2018-12-09 00:00:00 +0800
 categories: 计算机视觉
 tag: LBP特征
 ---

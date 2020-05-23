@@ -10,10 +10,12 @@ tag: 逻辑回归
 {:toc}
 
 
-### 宏观理解
+<h2 align='center'>宏观理解</h2>
+
 逻辑回归是一个分类模型，也是一个广义上的线性模型，用于处理线性可分的数据，输入特征往往都是多维互相独立的。它在线性回归的基础上，把结果映射到了0～1之间，所以多用于二分类任务，毕竟多分类的时候有softmax。这种映射关系其实上是概率的映射，大于0.5的概率，就预测为1，小于0.5的概率，就预测为0。之前提过线性回归的训练过程是最小化所有θ到决策边界的平均距离，而逻辑回归模型的过程则是尽可能的让真实值为1的实例的预测概率无限趋近于1，让真实值为0的实例的预测概率无限趋近于0。
 
-### 微观分析
+<h2 align='center'>微观分析</h2>
+
 逻辑回归的hypothesis就是：![](https://latex.codecogs.com/gif.latex?h_%5Ctheta%28x%29%20%3D%20g%28%5Ctheta%5ETX%29)。其中这个g()函数就是可以把任何值映射到0～1之间的sigmoid函数。sigmoid函数的图如下：
 
 <p align="center"> 
@@ -47,6 +49,17 @@ tag: 逻辑回归
 <p align="center"> 
   <img src="/imgs/logisticregression/5.png">
 </p>
+
+
+<h3>加入正则后</h3>
+
+加入正则项后的逻辑回归有两个最为出名，一个叫Ridge岭回归，一个叫Lasso回归。分别是加入了L2和L1的正则项。
+
+**Ridge岭回归**: ![](https://latex.codecogs.com/gif.latex?LR%20&plus;%20%5Clambda%20%5Cleft%20%5C%7C%20W%20%5Cright%20%5C%7C%5E2_2)
+其中的正则项在梯度下降中可求出偏导![](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial%20%5Clambda%20%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%5E2_2%7D%7B%5Cpartial%20w%7D%20%3D%202%5Clambda%20w)，故而可以使用梯度法来进行优化。
+
+**Lasso回归**: ![](https://latex.codecogs.com/gif.latex?LR%20&plus;%20%5Clambda%20%5Cleft%20%5C%7C%20W%20%5Cright%20%5C%7C_1)
+但是其中的正则项求偏导需分段求导，分为3种情况。故无法使用梯度下降求导。所以通常我们都是用坐标下降法来更新每次迭代的某个w参数。
 
 > 知识点拓展
 

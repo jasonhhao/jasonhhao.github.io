@@ -212,7 +212,7 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 
 以上就是在svm中加入kernel function的原理。
 
-<h3>对偶在SVM中的应用</h3>
+<h3>SVM中的拉格朗日对偶</h3>
 
 可是怎么求解这个超平面的参数呢？我们就可以把原始优化问题找到另一个更简便也可以替代原始优化问题的对偶函数来解决。
 我们把样本点到分界线的距离写为d，通过几何间隔求出![](https://latex.codecogs.com/gif.latex?d%3D%20%5Cfrac%7Bw%5ETx&plus;b%7D%7B%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%7D)

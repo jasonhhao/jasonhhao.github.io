@@ -10,28 +10,30 @@ tag: 支持向量机
 {:toc}
 
 
-### 宏观理解
+<h2 align="center">宏观理解</h2>
+
 我们已经讨论过逻辑回归了，它是个二分类器，在画逻辑回归的决策边界的时候，通常不只有一条线可以分割两个分类。就像这样：
 
 <p align="center"> 
-  <img src="/imgs/svm/1.png">
+  <img src="/imgs/svm/1.png" width="30%" height="30%">
 </p>
 
 通过这个图我们也能明显看出来，如果让我们自己手画这条边界，我们不会画的这么怪异，比如及其贴近某一阵营远离另一阵营。可是这正是逻辑回归可能给我们的结果，显然科学家们对这个结果并不买账。试想一下如果让你来亲手画一条决策边界，大概应该是这样的才比较舒服：
 
 <p align="center"> 
-  <img src="/imgs/svm/2.png">
+  <img src="/imgs/svm/2.png" width="30%" height="30%">
 </p>
 
 这条线大概处于两个阵营的中间，不偏不倚，对于强迫症来说这就是最美丽的东西。那么支持向量机（也叫大间距分类器）正是强迫症们的福音。它可以帮助我们画出这样一条线，所以用术语来形容svm的motivation叫：maximize the minimum margin。有了这条线，是不是就增强了鲁棒性，对于更多的数据拟合的更好了？
 
-### 微观分析
+<h2 align="center">微观分析</h2>
+
 这篇文章是按照业界大牛Andrew Ng在coursera上的思路讲解的。因为看了很多网上的文章，感觉数学理论过多不利于初学者理解，所以这里写的稍微入门了些。
 
 现在我们来好好认识一下svm的决策边界：
 
 <p align="center"> 
-  <img src="/imgs/svm/3.png">
+  <img src="/imgs/svm/3.png" width="30%" height="30%">
 </p>
 
 其中绿色的实线就是我们梦寐以求的决策边界，它到两个阵营的距离称之为margin，所以这条线也就是最大化来这个margin。
@@ -40,13 +42,13 @@ tag: 支持向量机
 我们已知逻辑回归的损失函数是这样的：
 
 <p align="center"> 
-  <img src="/imgs/svm/4.png">
+  <img src="/imgs/svm/4.png" width="50%" height="50%">
 </p>
 
 我们把loghθ(x)替换成svm的hypothesis就变成了：
 
 <p align="center"> 
-  <img src="/imgs/svm/5.png">
+  <img src="/imgs/svm/5.png" width="50%" height="50%">
 </p>
 
 (题外话：这个cost function肯定有很多人会问什么是cost（）？Andrew这样讲只是让我们更容易理解，其实svm常用的损失函数是hinge loss或者square hinge loss。想深究的同学可以另外google这个loss这里不做扩展。)
@@ -54,7 +56,7 @@ tag: 支持向量机
 在可视化上，LR和SVM的损失函数可以表现为这样：
 
 <p align="center"> 
-  <img src="/imgs/svm/6.png">
+  <img src="/imgs/svm/6.png" width="30%" height="30%">
 </p>
 
 我们已知对于LR来说，
@@ -72,13 +74,13 @@ tag: 支持向量机
 所以我们可以写出SVM的hypothesis为：
 
 <p align="center"> 
-  <img src="/imgs/svm/7.png">
+  <img src="/imgs/svm/7.png" width="30%" height="30%">
 </p>
 
 总结一下，现在我们了解了SVM的损失函数和hypothesis对应预测值的关系，汇总一下有了这张图：
 
 <p align="center"> 
-  <img src="/imgs/svm/8.png">
+  <img src="/imgs/svm/8.png" width="50%" height="50%">
 </p>
 
 最上面是cost function，这个跟我们之前给出的多了一个正则项，按惯例，我们把正则项前面的λ超参数放到了前面的C。这样C = 1/λ。如果C变大，那么说明正则越少。关于正则项的介绍有专门一篇文章这里不做赘述。下面是两个cost function的可视化，左边对应的y = 1，右边对应的y = 0。所以我们有了最下面的两条结论，如果要预测为1，我们要左边的图的横轴z大于等于1；相反对于要预测为0是一样的。
@@ -90,7 +92,7 @@ tag: 支持向量机
 假设我们有两个向量u和v：
 
 <p align="center"> 
-  <img src="/imgs/svm/9.png">
+  <img src="/imgs/svm/9.png" width="50%" height="50%">
 </p>
 
 那么他们的向量内积就是，那么它等于什么呢？
@@ -98,7 +100,7 @@ tag: 支持向量机
 我们把u和v可视化出来：
 
 <p align="center"> 
-  <img src="/imgs/svm/10.png">
+  <img src="/imgs/svm/10.png" width="50%" height="50%">
 </p>
 
 我们管 ||u|| 叫做u的范数，它的意义就是向量u的欧几里得长度，根据勾股定理我们可以计算出来![](https://latex.codecogs.com/gif.latex?%5Cparallel%20u%5Cparallel%20%3D%20%5Csqrt%7Bu_1%5E2%20&plus;%20u_2%5E2%7D)
@@ -106,13 +108,13 @@ tag: 支持向量机
 下面我们把v直角投影到u上，当然也可以把u直角投影到v上，这个不影响结果。如下图。
 
 <p align="center"> 
-  <img src="/imgs/svm/11.png">
+  <img src="/imgs/svm/11.png" width="50%" height="50%">
 </p>
 
 其中红色的线叫做v投影在u上的长度，我们把它的长度叫做p。p是一个有符号的实数，也就是在下图中p是正数，但是p也可以是负数。我们注意到上图中由于v和u的夹角小于90度，所以投影可以直接落在u上，如果这个夹角大于90度，这时候投影就只能落在u的延长线上，此时的p为负。
 
 <p align="center"> 
-  <img src="/imgs/svm/12.png">
+  <img src="/imgs/svm/12.png" width="50%" height="50%">
 </p>
 
 然后我们可以写作
@@ -121,7 +123,7 @@ tag: 支持向量机
 同理替换成![](https://latex.codecogs.com/gif.latex?%5Ctheta%20%5ETx)，我们可以画出下面这张图：
 
 <p align="center"> 
-  <img src="/imgs/svm/13.png">
+  <img src="/imgs/svm/13.png" width="50%" height="50%">
 </p>
 
 因为我们已知在支持向量机中当y = 1的时候![](https://latex.codecogs.com/gif.latex?%5Ctheta%20%5ETx)要大于等于1，所以我们是不是可以写成：p * ||θ|| ≥ 1
@@ -130,13 +132,13 @@ tag: 支持向量机
 那么红色和粉色的线段分别是两个label的support vector到θ的投影长度。如果我们要p * ||θ|| ≥ 1，是不是p越小的话，||θ||就要越大？
 
 <p align="center"> 
-  <img src="/imgs/svm/14.png">
+  <img src="/imgs/svm/14.png" width="50%" height="50%">
 </p>
 
 可是我们的svm就是要找到一个可以让p尽量大的情况。所以与上图相反，我们要缩小||θ||。比如我们把决策边界换成y轴：
 
 <p align="center"> 
-  <img src="/imgs/svm/15.png">
+  <img src="/imgs/svm/15.png" width="50%" height="50%">
 </p>
 
 这样是不是就是我们希望的决策边界？此刻的p比之前的p要大了许多，所以相应的||θ||也就变小。SVM就是要找到这样的||θ||使得我们所有的p最大。
@@ -146,7 +148,7 @@ SVM with kernel
 没关系我们SVM还有一个绝招叫核函数（kernel function）。核函数在做的，就是把低纬度线性不可分的数据集映射到高纬度线性可分。举个例子：
 
 <p align="center"> 
-  <img src="/imgs/svm/16.png">
+  <img src="/imgs/svm/16.png" width="50%" height="50%">
 </p>
 
 先来句鸡汤，当你遇到困难束手无策的时候，不妨换个角度看问题，你会发现世界原来还可以这么简单。
@@ -156,24 +158,24 @@ SVM with kernel
 回到问题上，假设我们现在有的是一个线性不可分的数据集，比如是这样的：
 
 <p align="center"> 
-  <img src="/imgs/svm/17.png">
+  <img src="/imgs/svm/17.png" width="50%" height="50%">
 </p>
 
 <p align="center"> 
-  <img src="/imgs/svm/18.png">
+  <img src="/imgs/svm/18.png" width="50%" height="50%">
 </p>
 
 我们来做一个替换：f1 = x1，f2 = x2，f3 = x1x2，f4 = x1^2，f5 = x2^2。所以我们有：
 
 <p align="center"> 
-  <img src="/imgs/svm/19.png">
+  <img src="/imgs/svm/19.png" width="50%" height="50%">
 </p>
 
 
 这里我用高斯函数来举例。我们已知所有的feature x，那既然要映射到高维空间，就必须对已经有的数据点进行一个转换。假设我们有这样3个新的数据点l1，l2，l3:
 
 <p align="center"> 
-  <img src="/imgs/svm/20.png">
+  <img src="/imgs/svm/20.png" width="50%" height="50%">
 </p>
 
 f2和f3同理。这里的similarity就是我们的核函数，这里用的是高斯核函数。
@@ -183,7 +185,7 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 所以通过了similarity函数，我们可以得到所有的f值，然后我们把这些f值当成新的x参数。假设我们现在有一个l1如图，在3d图中，如果x和l的相似时比如都是[3, 5]。那么f1就是1。如果x离开[3, 5]这个点，离得越远，曲线越平滑，也就是对应的f1值越趋近于0。
 
 <p align="center"> 
-  <img src="/imgs/svm/21.png">
+  <img src="/imgs/svm/21.png" width="50%" height="50%">
 </p>
 
 高斯函数里面的σ是一个超参数，但是要说明的是它的变化会导致什么。比如上图中我们改变σ从0.5 ～3。可以明显看出来如果我们的σ很大，那么f曲线会很平缓，bias会很高，variance会很低；相反σ很小，那么f曲线会很陡峭，bias会很低，variance会很高。
@@ -191,7 +193,7 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 那么这个f怎么帮助我们来分类呢？假设我们有下图中的三个l1，l2，l3，还有一个已知的预测函数和学习到的每个θ的值：
 
 <p align="center"> 
-  <img src="/imgs/svm/22.png">
+  <img src="/imgs/svm/22.png" width="50%" height="50%">
 </p>
 
 
@@ -202,10 +204,52 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 对于怎么选择l1，l2，l3，我们可以直接把他们和x1，x2，x3划等号，然后在cost function中对应的每一个x，此时就变成了f：
 
 <p align="center"> 
-  <img src="/imgs/svm/23.png">
+  <img src="/imgs/svm/23.png" width="50%" height="50%">
 </p>
 
 
 这个f当然和x不一样因为f = kernel(l1, x1)，这要看我们选取什么样的核函数了。
 
 以上就是在svm中加入kernel function的原理。
+
+<h3>对偶在SVM中的应用</h3>
+
+可是怎么求解这个超平面的参数呢？我们就可以把原始优化问题找到另一个更简便也可以替代原始优化问题的对偶函数来解决。
+我们把样本点到分界线的距离写为d，通过几何间隔求出![](https://latex.codecogs.com/gif.latex?d%3D%20%5Cfrac%7Bw%5ETx&plus;b%7D%7B%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%7D)
+
+所以能看出来，如果我们要最大化间距d，那么就等于最小化w，所以我们有了我们的目标函数（为了求导方便，我们改写函数）：
+![](https://latex.codecogs.com/gif.latex?min%5Cfrac%7B1%7D%7B2%7D%5Cleft%20%5C%7C%20w%20%5Cright%20%5C%7C%5E2)
+
+又因为在超平面上无论我们怎么映射x，都会存在两个不等式：
+
+<p align="center"> 
+  <img src="/imgs/svm/24.png" width="20%" height="20%">
+</p>
+
+所以通过这个我们可以得出![](https://latex.codecogs.com/gif.latex?%5Cleft%5C%7B%5Cbegin%7Bmatrix%7Dy_i%28w%20%5Ccdot%20x_i%20&plus;%20b%29%20-%201%20%5Cgeq%200%20%26%20%5C%5C%20-y_i%28w%20%5Ccdot%20x_i%20&plus;%20b%29%20&plus;%201%20%5Cleq%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.)
+
+我们就有了有约束条件的优化问题，并且代入到拉格朗日函数中，得到原始问题和对偶问题。
+如果对偶不熟悉的话可以参考[凸优化和对偶](https://jasonhhao.github.io/2020/05/23/convex/)这篇文章，写的很详细。
+
+<p align="center"> 
+  <img src="/imgs/svm/25.png" width="30%" height="30%">
+</p>
+
+随后我们试着求解min L(w,b,alpha)，计算出拉格朗日函数关于w和b的偏导数：
+
+<p align="center"> 
+  <img src="/imgs/svm/26.png" width="30%" height="30%">
+</p>
+
+随后我们把得出的w值代入到拉格朗日函数中：
+
+<p align="center"> 
+  <img src="/imgs/svm/27.png" width="50%" height="50%">
+</p>
+
+随后我们的原最优化问题的对偶问题就变成了：
+
+<p align="center"> 
+  <img src="/imgs/svm/28.png" width="70%" height="70%">
+</p>
+

@@ -225,7 +225,7 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 又因为在超平面上无论我们怎么映射x，都会存在两个不等式：
 
 <p align="center"> 
-  <img src="/imgs/svm/24.png" width="20%" height="20%">
+  <img src="/imgs/svm/24.png" width="40%" height="40%">
 </p>
 
 所以通过这个我们可以得出![](https://latex.codecogs.com/gif.latex?%5Cleft%5C%7B%5Cbegin%7Bmatrix%7Dy_i%28w%20%5Ccdot%20x_i%20&plus;%20b%29%20-%201%20%5Cgeq%200%20%26%20%5C%5C%20-y_i%28w%20%5Ccdot%20x_i%20&plus;%20b%29%20&plus;%201%20%5Cleq%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.)
@@ -234,37 +234,37 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
 如果对偶不熟悉的话可以参考[凸优化和对偶](https://jasonhhao.github.io/2020/05/23/convex/)这篇文章，写的很详细。
 
 <p align="center"> 
-  <img src="/imgs/svm/25.png" width="30%" height="30%">
+  <img src="/imgs/svm/25.png" width="50%" height="50%">
 </p>
 
 随后我们试着求解min L(w,b,alpha)，计算出拉格朗日函数关于w和b的偏导数：
 
 <p align="center"> 
-  <img src="/imgs/svm/26.png" width="30%" height="30%">
+  <img src="/imgs/svm/26.png" width="50%" height="50%">
 </p>
 
 随后我们把得出的w值代入到拉格朗日函数中：
 
 <p align="center"> 
-  <img src="/imgs/svm/27.png" width="50%" height="50%">
+  <img src="/imgs/svm/27.png" width="70%" height="70%">
 </p>
 
 随后我们的原最优化问题的对偶问题就变成了：
 
 <p align="center"> 
-  <img src="/imgs/svm/28.png" width="70%" height="70%">
+  <img src="/imgs/svm/28.png" width="100%" height="100%">
 </p>
 
 因为我们知道它是满足slater条件的，所以我们可以通过KKT条件进一步解出
 
 <p align="center"> 
-  <img src="/imgs/svm/29.png" width="70%" height="70%">
+  <img src="/imgs/svm/29.png" width="100%" height="100%">
 </p>
 
 所以通过求得对偶问题，我们最终可以把一开始的分离超平面改写成：
 
 <p align="center"> 
-  <img src="/imgs/svm/30.png" width="70%" height="70%">
+  <img src="/imgs/svm/30.png" width="100%" height="100%">
 </p>
 
 此时我们的x都是二维平面的数据点，经过三维的某种映射我们可以写成![](https://latex.codecogs.com/gif.latex?%5Cphi%20%28x%29)，我们进一步发现

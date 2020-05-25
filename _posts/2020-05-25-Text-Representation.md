@@ -50,7 +50,7 @@ tag: 文本表示
 <h3>word2vec</h3>
 
 word2vec是两个模型的统称，分别是skip-gram和CBOW，这两种模型及其类似。这种方法即上文中提到的distributed representation，全局泛化能力更强，使之前sparse的编码矩阵变得dense，这样就解决了相似度内积为0的问题。同样的因为是分布的，所以在词和词之间的相似度也有了更好的表示。
-因为这个word2vec内容很多，就不继续在这篇文章里介绍了，请转移到[《Word2Vec》]()
+因为这个word2vec内容很多，就不继续在这篇文章里介绍了，请转移到[《Word2Vec》](https://jasonhhao.github.io/2020/05/24/Word2Vec/)
 
 
 

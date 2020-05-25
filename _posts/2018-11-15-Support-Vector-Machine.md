@@ -253,3 +253,45 @@ f2和f3同理。这里的similarity就是我们的核函数，这里用的是高
   <img src="/imgs/svm/28.png" width="70%" height="70%">
 </p>
 
+因为我们知道它是满足slater条件的，所以我们可以通过KKT条件进一步解出
+
+<p align="center"> 
+  <img src="/imgs/svm/29.png" width="70%" height="70%">
+</p>
+
+所以通过求得对偶问题，我们最终可以把一开始的分离超平面改写成：
+
+<p align="center"> 
+  <img src="/imgs/svm/30.png" width="70%" height="70%">
+</p>
+
+此时我们的x都是二维平面的数据点，经过三维的某种映射我们可以写成![](https://latex.codecogs.com/gif.latex?%5Cphi%20%28x%29)，我们进一步发现
+在分离超平面中，有关的数据点x是由内积组成的，故我们可以简化这个x数据点映射用![](https://latex.codecogs.com/gif.latex?K%28x_i%2C%20x%29)代替。
+
+所以问题变得简单了，我们输入空间到特征空间的变换，其实就是在选择这个K函数是什么样的核函数，比如常见的核函数有高斯核函数、多项式核函数等。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

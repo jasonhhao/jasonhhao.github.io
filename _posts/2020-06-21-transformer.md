@@ -135,7 +135,25 @@ self attention可以告诉我们如果x1和x2的词很相似，那么他们的�
 
 <h4>Attention mask</h4>
 
-我们
+我们已经有了完整的一个transformer block了。下面就可以训练了。如果是类似于情感分类的任务我们不需要做其他的事情，但是如果我们做的任务类似于text generation，还需要使用一个操作叫attention mask。
+
+假设我们在学习hello这个单词，我们会把h e l l o一起喂给模型，这样就会有一个问题，在计算loss之后反向传播时h可以看到它后面的字母是e，l也可以看到它后面是o。这样学习的话模型就会偷懒，它会知道我要的答案其实就是下一个输入，我已经看到了。所以为了避免模型作弊，我们要在attention的结果之后加一个mask来强制e只能看到h，l只能看到前面的he。
+
+<p align="center"> 
+  <img src="/imgs/transformer/9.png" width="80%" height="80%">
+</p>
+
+以上是我们encoder的全部过程，对于transformer block的讲解已经完毕了，但是最后还是提一下decoder的过程。它当然也是使用的transformer block。
+
+
+<p align="center"> 
+  <img src="/imgs/transformer/10.png" width="80%" height="80%">
+</p>
+
+我们得到encoder的输出之后，因为我们是一个auto regressive model，所以我们Y1到Yn-1和x给到decoder。就是图中decoder的输入。照常我们做一个mask multi-head attention和norm layer，此时的输出是n-1个。随后我们需要把norm layer的输出作为query，把原本encoder的输出作为key和value进行一个attention计算。最后过一个softmax得到输出概率即可。
+
+这里encoder和decoder一般叠加6或者12层，主要就看自己是不是土豪了。
+
 
 
 

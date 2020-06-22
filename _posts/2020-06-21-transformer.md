@@ -45,6 +45,20 @@ transformer也是沿用了encoder - decoder的架构：
 
 self attention可以告诉我们如果x1和x2的词很相似，那么他们的权重w就会很大。并且整个过程我们不需要额外的参数，这样就会让我们的self attention不容易过拟合。但是有好也就有坏，通过这种方式，我们可以发现如果我们把x1和x2换一个位置，那么我们得到的y2是一样的。这也就代表了self attention无法考虑到输入序列的位置信息。为了解决这个问题，我们就要引入一个positional embedding位置编码的机制。
 
+<h4>Positional embedding</h4>
+
+我们需要的只是每个单词的位置信息，那么我们可以生成一个位置向量，让它和输入input的维度相同，然后把他们两个相加即可。我们的位置向量按照sin和cos函数计算：
+
+<p align="center"> 
+  <img src="/imgs/transformer/8.png" width="50%" height="50%">
+</p>
+
+其中pos是位置编号，比如在计算第二个词的时候，pos就是2。i是index over dimensions，使得embedding有维度d个。
+
+
+
+
+
 为了概括之前的attention和现在的self attention机制，我们使用一种共通的命名（query，key，value）对。刚开始看这些东西的时候一定会很混乱，网上各种介绍也都不是很通俗，我来尝试解释一下：
 
 我们的每一个输入x在做attention的过程中分别会扮演三种角色，分别叫做query、key和value：
@@ -63,6 +77,8 @@ self attention可以告诉我们如果x1和x2的词很相似，那么他们的�
 <p align="center"> 
   <img src="/imgs/transformer/3.png">
 </p>
+
+
 
 那么我们上一个例子中的y2计算过程可以这样表示
 
@@ -88,13 +104,38 @@ self attention可以告诉我们如果x1和x2的词很相似，那么他们的�
   <img src="/imgs/transformer/6.png" width="80%" height="80%">
 </p>
 
-<h4>总结</h4>
+<h4>Residual operation</h4>
 
-我们说的transformer block就是这样的一个过程，首先我们把输入进行一个multi-head self attention，然后得出来一个结果，再通过一个类似于resnet的残差操作相加喂给norm layer，然后再把输出给到一个单隐含层的神经网络，过一个relu激活函数之后再接一个残差，再过一个norm layer得出结果。这个结果和input的维度一样，这样就代表我们可以在结果的后面再继续拼接下一个transformer block。
+我们拿到输出之后，要先做一个残差操作，把self attention得出的结果和原始input相加喂给norm layer。为的是避免梯度爆炸或者消失，这是深度网络中常见的一个trick。
+
+<h4>norm layer</h4>
+
+拿到残差输出之后，下一步要通过一个norm layer。注意这里我们仍然有｜input length｜个输入。我们要对每一个输入做一个归一化。所以我们首先要求出每一个输入向量的均值和方差，然后对该向量里面的每一个数做一个转化![](https://latex.codecogs.com/gif.latex?%5Cwidehat%7Ba%7D%20%3D%20%5Cgamma%20%5Cfrac%7Ba-%5Cmu%20%7D%7B%5Csqrt%7B%5Csigma%5E2%20&plus;%20%5Cvarepsilon%20%7D%7D%20&plus;%20%5Cbeta)，其中ε是我们为了防止分母为0加的一个平滑项，γ和β是两个可训练的参数，是每个layer共享的，也就是在这一层中所有的输入的γ和β是共享的。
+
+<h4>Feed forward layer</h4>
+
+然后再把每个输出给到一个单隐含层的神经网络，就是有w和b两个训练参数再过一个relu激活函数，跟单层神经网络是一样的。
+
+
+总结一下，我们说的transformer block就是这样的一个过程：
 
 <p align="center"> 
   <img src="/imgs/transformer/7.png" width="80%" height="80%">
 </p>
+
+1. 得到输入和对应的位置编码，相加
+2. 喂到multi-head self attention中，拿到输出
+3. 残差计算，把attention中的输出和原始input相加
+4. 喂给norm layer，对每一个vector分别归一化
+5. 喂给一个单层神经网络，通过一个relu激活函数
+6. 残差计算，把网络中的输出和norm layer后的输出相加
+7. 喂给第二个norm layer得到归一化后的输出
+8. 如果有下一层的transformer block，作为输入传入下一层循环到step 1；如果没有，输出结果。
+
+
+<h4>Attention mask</h4>
+
+我们
 
 
 

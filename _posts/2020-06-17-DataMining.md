@@ -12,7 +12,9 @@
 
 老师手里有一份关于泰坦尼克号的数据集，同学可以点击[这里](https://www.kaggle.com/c/titanic/data)下载。里面有891个人的登船记录，每个人都有以下信息登记在册：
 
-![](./pics/1.png)
+<p align="center"> 
+  <img src="/imgs/pics/1.png">
+</p>
 
 我们这节课就是想从这891份数据中挖掘出潜在的知识 -- 谁可以幸存？
 
@@ -53,8 +55,9 @@
 
 所以在我们整个的案例中，分析流程就是这样的：
 
-![](./pics/2.png)
-
+<p align="center"> 
+  <img src="/imgs/pics/2.png">
+</p>
 
 当然啦，人类都是图方便的，市面上已经有很多的数据挖掘软件可以供我们使用，几乎不需要写任何代码，例如Orange、Weka等。
 在我们这次案例中，老师还是用python来手写一步步的过程，然后同学想再试用一下那些软件就会发现异常的简便～
@@ -78,7 +81,10 @@ test = pd.read_csv("test.csv")
 
 官方给的数据分为训练集（train.csv）和测试集（test.csv）。我们都分别导入一下来看看都有什么内容～
 
-![](./pics/3.png)
+
+<p align="center"> 
+  <img src="/imgs/pics/3.png">
+</p>
 
 在训练集里面一共有891行，每一行对应一个人的数据。测试集有418行，还少了一个是否幸存的Survived列是我们需要通过模型来预测的。我们可以简单看一下训练集的内容：
 
@@ -103,7 +109,10 @@ train.info()
 train.describe()
 ```
 
-![](./pics/4.png)
+
+<p align="center"> 
+  <img src="/imgs/pics/4.png">
+</p>
 
 info()函数帮助我们总结了都有那些列，然后这些列中有多少个是非空的。我们发现Age里面有大约不到200个缺失值，Cabin更严重。。只有204个有值，这些我们都会在后面进行一个处理。
 
@@ -122,7 +131,10 @@ import seaborn as sns
 sns.countplot(train['Survived'])
 ```
 
-![](./pics/5.png)
+
+<p align="center"> 
+  <img src="/imgs/pics/5.png">
+</p>
 
 umm..活下来的人占了38%，比老师想象的要多很多啊！
 
@@ -132,7 +144,9 @@ umm..活下来的人占了38%，比老师想象的要多很多啊！
 sns.countplot(train['Pclass'], hue=train['Survived'])
 ```
 
-![](./pics/6.png)
+<p align="center"> 
+  <img src="/imgs/pics/6.png">
+</p>
 
 横坐标表示分别在头等舱、商务舱还是经济舱，纵坐标表示人数，橘色表示生还人数，蓝色表示死亡人数。
 
@@ -147,7 +161,9 @@ train['Survived'].groupby(pd.qcut(train['name_len'], 5)).mean()
 
 我们可以创建新的一列，就叫name_len 名字的长度，然后根据这个长度我们和是否幸存做一个统计。
 
-![](./pics/7.png)
+<p align="center"> 
+  <img src="/imgs/pics/7.png">
+</p>
 
 有没有毛骨悚然，数据告诉我们，如果你的名字字符在32-82之间，你的幸存概率是67%。随着名字长度越长，生还的概率越大！顿时羡慕维吾尔族的兄弟们有没有。其实从某一个方面也可以说得通，就是数据集里面的名字都是带着头衔的，比如博士、商务部长、蒙面黑衣人啥的。。也就是说如果你的头衔越长。。可能你的地位越重，那么你可能才会得到更多的生还机会～
 
@@ -158,7 +174,9 @@ train['Sex'].value_counts(normalize=True)
 train['Survived'].groupby(train['Sex']).mean()
 ```
 
-![](./pics/8.png)
+<p align="center"> 
+  <img src="/imgs/pics/8.png">
+</p>
 
 嗯。。可见74%的女性都幸存了，而只有18%的男性幸存。这也说明了当时还是禀着女士优先的习惯让女性先逃生。
 
@@ -168,7 +186,9 @@ train['Survived'].groupby(train['Sex']).mean()
 train['Survived'].groupby(pd.qcut(train['Fare'], 5)).mean()
 ```
 
-![](./pics/9.png)
+<p align="center"> 
+  <img src="/imgs/pics/9.png">
+</p>
 
 嗯果然如此啊。看来今后出门还是不能太扣啊。
 
@@ -178,7 +198,9 @@ train['Survived'].groupby(pd.qcut(train['Fare'], 5)).mean()
 train['Survived'].groupby(pd.qcut(train['Age'], 5, duplicates = 'drop')).mean()
 ```
 
-![](./pics/10.png)
+<p align="center"> 
+  <img src="/imgs/pics/10.png">
+</p>
 
 19岁一下的孩子幸存是最高的，应该当时都是妇女儿童先走～20多岁的小伙子幸存最低啊，大概都舍己为人了吧。30岁往上的估计好多都是带着长长的名字和买了贵贵的船票才拉高了幸存率吧。。
 
@@ -192,7 +214,9 @@ train['Survived'].groupby(pd.qcut(train['Age'], 5, duplicates = 'drop')).mean()
 
 我们在之前观察train的时候发现有3列是存在缺失值的，分别是Age、Cabin和Embarked。别忘了我们的test训练集也是需要处理的，我们分别看一下train和test的数据缺失情况：
 
-![](./pics/11.png)
+<p align="center"> 
+  <img src="/imgs/pics/11.png">
+</p>
 
 现在这个时代什么最贵？数据最贵！所以我们当然希望能补全的数据就不要轻易扔掉，那我们就要想，像年龄这一列怎么来补全呢？都强制设置成统一的数字？那么怎么选取这个数字呢？我们可以用所有其他年龄的均值？或者哪个年龄最多我们就用哪个？再或者更麻烦一点我们通过其他的列来建模预测一下年龄？当然都是可以的，这里我们就设置成均值好啦：
 
@@ -204,7 +228,9 @@ test.Age.fillna(test.Age.mean(), inplace=True)
 train.info()
 ```
 
-![](./pics/12.png)
+<p align="center"> 
+  <img src="/imgs/pics/12.png">
+</p>
 
 我们看到年龄Age这一列已经被填满了，接下来我们想一想Cabin怎么办？这也太少啦，缺了一大半啊。那我们干脆扔掉好了～
 
@@ -215,7 +241,9 @@ test.drop(['Cabin'], axis = 1, inplace = True)
 train.info()
 ```
 
-![](./pics/13.png)
+<p align="center"> 
+  <img src="/imgs/pics/13.png">
+</p>
 
 
 嗯。。很好，现在Cabin这一列已经消失掉了。还有最后一个Embarked，只缺了两个。那么我们就看哪个港口登船的最多就把它们设置成哪个港口吧～
@@ -245,14 +273,18 @@ test.Fare.fillna(test.Fare.mean(), inplace=True)
 
 到目前为止我们的数据都已经被填充满啦，这样的数据看起来舒服多了
 
-![](./pics/14.png)
+<p align="center"> 
+  <img src="/imgs/pics/14.png">
+</p>
 
 
 现在虽然数据已经被填满了，可是里面会不会有一些异常值呢？
 
 我们通过train.describe()和test.describe()简单观察一下
 
-![](./pics/15.png)
+<p align="center"> 
+  <img src="/imgs/pics/15.png">
+</p>
 
 
 看样子这些数据还算老实，没有什么负20岁或200岁的，兄弟姐妹子女父母的数量也都还可以接受。那我们就保持不动吧～如果同学以后在项目中发现了一些异常值也可以把他们当成空缺值进行一个替换。
@@ -269,7 +301,9 @@ test.Fare.fillna(test.Fare.mean(), inplace=True)
 train.corr()
 ```
 
-![](./pics/16.png)
+<p align="center"> 
+  <img src="/imgs/pics/16.png">
+</p>
 
 当然啦这里面只有数值型的列，字符串的格式也没办法统计嘛。我们可以看到蓝框圈起来的关于Survived和其余的列的相关程度。和我们之前可视化分析的内容差不多，Pclass和Fare都是正相关性比较大的，意味着钱越多你的生存机会就会越大。比较少的是SibSp（兄妹和伴侣的人数），可以考虑把这一列给丢掉。
 
@@ -295,11 +329,15 @@ test.drop(['Ticket','Name', 'SibSp', 'PassengerId'], axis = 1, inplace = True)
 
 为了安抚模型，我们对于这种含有字符串的数据，给转化成数字，这个转化的过程我们可以使用独热编码来完成：
 
-![](./pics/17.png)
+<p align="center"> 
+  <img src="/imgs/pics/17.png">
+</p>
 
 在这里一共有3种颜色，我们把每个颜色对应的一列上的数字标为1，其余为0。这就是独热编码。相同的，如果我们想编码我们的港口编号，也是一样的操作：
 
-![](./pics/18.png)
+<p align="center"> 
+  <img src="/imgs/pics/18.png">
+</p>
 
 现在我们就可以把Embarked这一列替换成右边的一个3✖️3的矩阵。也就是意味着我们要丢掉Embarked这一列，并且再添加【Embarked_S, Embarked_C, Embarked_Q】三列。我们同样对性别和船舱的等级也都做一下独热编码：
 
@@ -318,7 +356,9 @@ test = dummies(test, ['Sex', 'Embarked', 'Pclass'])
 
 这样我们的数据集就变成了这个样子，我们仍然可以看出第一个人是男性，在S登船，在经济舱。
 
-![](./pics/19.png)
+<p align="center"> 
+  <img src="/imgs/pics/19.png">
+</p>
 
 完成！现在模型就不会再抱怨它看不懂了。所以对于我们数据中的离散型数值（非连续的）我们就可以使用独热编码来加工一下让模型更好理解。那么同学到这里会不会有一个疑问，那么如果是连续的数值，是不是就不需要额外加工了？
 
@@ -408,7 +448,9 @@ dt.score(testX, testY)
 
 我们这节课通过数据挖掘的方式，揭开了泰坦尼克号里的人情冷暖。闭上眼睛回想一下我们这一路分析过来，都用到了哪些方法和技巧？
 
-![](./pics/20.png)
+<p align="center"> 
+  <img src="/imgs/pics/20.png">
+</p>
 
 首先我们对数据进行了一个整体的观察，看出幸存率大概在30%多。随后我们又对每一列的数据进行了可视化和统计，领悟到了以后出门有钱就买头等舱=，=
 

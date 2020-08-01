@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  贝叶斯模型
+title:  贝叶斯模型Bayesian Model
 date:   2020-08-01 00:00:00 +0800
 categories: 自然语言处理
 tag: 贝叶斯模型

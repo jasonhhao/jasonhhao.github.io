@@ -34,6 +34,7 @@ tag: 贝叶斯模型
 1. 什么是贝叶斯？
 2. 贝叶斯的推理     
       2.1 MCMC采样
+      
       2.2 变分法variational inference
 3. xxx
 

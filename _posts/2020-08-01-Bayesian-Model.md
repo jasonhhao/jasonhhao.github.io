@@ -116,14 +116,27 @@ LDA主题模型用来生成一堆文本的主题分布doc-topic distribution，�
 
 ![](https://latex.codecogs.com/gif.latex?W_%7Bij%7D%20%5Csim%20Multinomial%28%5Cphi_%7BZ_%7Bij%7D%7D%29)
 
+现在我们已经可以按照步骤写出它的后验概率，那么怎么求解呢？这就回到了我们之前提到过的MCMC。
 
 
+<h3>3.1 LDA模型之Gibbs sampling</h3>
 
 
+Gibbs sampling是MCMC中的一种方法，它的步骤和坐标下降法很像，坐标下降法是在学习一个参数的时候固定其他的参数，而吉布斯采样是在采样一个变量的时候固定其他的变量。比如我们要sample一个Θi，我们就要固定其余的所有变量，包括除了Θi以外的所有Θ。
 
+![](https://latex.codecogs.com/gif.latex?P%28%5Ctheta_i%7C%5Calpha%2C%20%5Cbeta%2CW%2C%5Cphi%2CZ%2C%5Ctheta_%7B-i%7D%29)
 
+根据markov blanket我们可以找出里面不会影响到Θi的一些项。
 
+<p align="center"> 
+  <img src="/imgs/bayesianModel/4.png">
+</p>
 
+markov blanket指的是在一个概率图中（如上图），我们只认为某些点和x6是造成影响的而非所有。同理我们可以找出Θi的上下游变量，得到：
+
+![](https://latex.codecogs.com/gif.latex?P%28%5Ctheta_i%7C%5Calpha%2CZ%29%20%3D%20P%28%5Ctheta_i%7C%5Calpha%2C%5Cleft%20%5C%7B%20Z_%7Bij%7D%20%5Cright%20%5C%7D_%7Bj%3D1%7D%5E%7BN_i%7D%29%5Cpropto%20P%28%5Ctheta_i%7C%5Calpha%29P%28%5Cleft%20%5C%7B%20Z_%7Bij%7D%20%5Cright%20%5C%7D%7C%5Ctheta_i%29)
+
+然后根据Dirichlet的PDF可以推出来其实后验也是遵从Dirichlet分布。这个就是共轭分布，所以在概率图中当我们的先验属于一种分布时我们通常会使它的likelihood为一种形式来产生共轭分布。对于其余的参数求解方式也是一样的。
 
 
 
